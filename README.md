@@ -10,7 +10,7 @@ If you want to see test coverage, need to install coverage package:
 `pip install coverage`.
 Better use virtual environment.
 
-After package coverage was installed, run:
+After package coverage will be installed, run:
 `coverage run --source=maze_problem/solver -m unittest discover && coverage report`
 
 # Maze
