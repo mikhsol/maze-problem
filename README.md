@@ -1,6 +1,18 @@
 # Maze Problem
 Given a maze, find shortest path from initial to destination point.
 
+# Running tests
+You can run unit tests by:
+`python -m unittest`
+from the directory above the package.
+
+If you want to see test coverage, need to install coverage package:
+`pip install coverage`.
+Better use virtual environment.
+
+After package coverage was installed, run:
+`coverage run --source=maze_problem/solver -m unittest discover && coverage report`
+
 # Maze
 Maze provided as tuple of strings, where:
 * '1' - initial position,
@@ -28,27 +40,28 @@ maze1 = (
 # result - ['d']
 
 maze2 = (
-    '1o2',
+    '102',
 )
-# result - exception
+# result - excepti0n
 
 maze3 = (
     '1..',
-    'oo.',
+    '00.',
     '...',
-    '2oo',
+    '200',
 )
-# result - ['r', 'r', 'd', 'd', 'l' , 'l', 'd]
+# result - ['r', 'r', 'd', 'd', 'l' , 'l', 'd']
 
 maze4 = (
-    '1...o',
-    '.oo.o',
-    '.oo.o',
-    '...o.',
-    '.o...',
-    '...o.',
-    '.o.o.',
-    'oo.o2',
+    '1...0',
+    '.00.0',
+    '.00.0',
+    '...0.',
+    '.0...',
+    '...0.',
+    '.0.0.',
+    '00.02',
 )
-# result - ['d', 'd', 'd', 'r' 'r', 'd', 'r', 'r', 'd' 'd' 'd']
+# result - ['d', 'd', 'd', 'r', 'r', 'd', 'r', 'r', 'd', 'd', 'd']
 ```
+
