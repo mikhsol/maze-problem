@@ -2,7 +2,7 @@
 Given a maze, find shortest path from initial to destination point.
 
 # Maze
-Maze provided as list of strings, where:
+Maze provided as tuple of strings, where:
 * '1' - initial position,
 * '2' - destination point,
 * '0' - wall
