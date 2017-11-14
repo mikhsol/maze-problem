@@ -15,7 +15,7 @@ If you want to see test coverage, need to install coverage package:
 Better use virtual environment.
 
 After package coverage will be installed, run:
-`coverage run --source=maze_folder/solver -m unittest discover && coverage report`
+`coverage run --source=maze_problem/solver -m unittest discover && coverage report`
 
 # Maze
 Maze provided as tuple of strings, where:
