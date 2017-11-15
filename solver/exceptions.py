@@ -4,3 +4,7 @@ class NoInitNodeException(Exception):
 
 class NoPathException(Exception):
     pass
+
+
+class NoMazeException(Exception):
+    pass

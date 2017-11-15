@@ -1,7 +1,11 @@
 import unittest
 
 from maze_problem.solver.maze_solver import MazeSolver
-from maze_problem.solver.exceptions import NoInitNodeException, NoPathException
+from maze_problem.solver.exceptions import (
+    NoInitNodeException,
+    NoPathException,
+    NoMazeException,
+)
 from maze_problem.solver.node import Node
 
 
@@ -69,3 +73,7 @@ class TestMazeSolverSolution(unittest.TestCase):
         s = MazeSolver(maze)
         with self.assertRaises(NoPathException):
             s.solve()
+
+    def test_no_maze_on_solver_construction(self):
+        with self.assertRaises(NoMazeException):
+            MazeSolver()
