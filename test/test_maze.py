@@ -64,3 +64,8 @@ class TestMazeSolverSolution(unittest.TestCase):
         s = MazeSolver(maze)
         with self.assertRaises(NoPathException):
             s.solve()
+
+        maze = ('..102',)
+        s = MazeSolver(maze)
+        with self.assertRaises(NoPathException):
+            s.solve()

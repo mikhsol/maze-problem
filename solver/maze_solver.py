@@ -9,12 +9,14 @@ DIRECTIONS = {
     (1, 0): 'd'
 }
 
+
 class MazeSolver(object):
     def __init__(self, maze=()):
         self.maze = maze
         self.init_node = self._find_init_node()
         self.maze_rows = len(maze)
         self.maze_cols = len(maze[0])
+        self.visited_cells = []
 
     def _find_init_node(self):
         for row, line in enumerate(self.maze):
@@ -33,6 +35,7 @@ class MazeSolver(object):
                 if child.value == '2':
                     return self._construct_path_from_final_node(child)
                 q.append(child)
+            self.visited_cells.append((n.row, n.col))
 
         raise NoPathException("No path in this maze")
 
@@ -41,13 +44,16 @@ class MazeSolver(object):
                 if self._check_node_availability(d, node)]
 
     def _check_node_availability(self, direction, node):
-        return self.maze_rows > node.row+direction[0] >= 0 \
-               and self.maze_cols > node.col+direction[1] >= 0 \
-               and self.maze[node.row+direction[0]][node.col+direction[1]] in ['.', '2']
+        next_row = node.row + direction[0]
+        next_col = node.col + direction[1]
+        return self.maze_rows > next_row >= 0 \
+            and self.maze_cols > next_col >= 0 \
+            and self.maze[next_row][next_col] in ['.', '2'] \
+            and (next_row, next_col) not in self.visited_cells
 
     def _check_position(self, direction, node):
-        new_row = node.row+direction[0]
-        new_col = node.col+direction[1]
+        new_row = node.row + direction[0]
+        new_col = node.col + direction[1]
         return Node(self.maze[new_row][new_col], new_row, new_col, node)
 
     @staticmethod
@@ -55,7 +61,6 @@ class MazeSolver(object):
         result = []
         while node.value != '1':
             p = node.prev
-            result.append(DIRECTIONS[(node.row-p.row, node.col-p.col)])
+            result.append(DIRECTIONS[(node.row - p.row, node.col - p.col)])
             node = node.prev
         return result[::-1]
-
